@@ -3,15 +3,15 @@ from django.db import models
 
 User = get_user_model()
 from ckeditor.fields import RichTextField
-from cloudinary.models import CloudinaryField
+#from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
 #Categoría
 class Category(models.Model):
     name = models.CharField(max_length=20)
-    image = CloudinaryField('image')
-    #image = models.ImageField(upload_to='Categories',blank=False, null=False)
+    #image = CloudinaryField('image')
+    image = models.ImageField(upload_to='Categories',blank=False, null=False)
     slug = models.SlugField(unique=True, max_length=40)
     featured = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
@@ -30,8 +30,8 @@ class Article(models.Model):
     title = models.CharField(max_length=255)
     introduction = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
-    image = CloudinaryField('image')
-    #image = models.ImageField(upload_to='Articles', blank=False, null=False)
+    #image = CloudinaryField('image')
+    image = models.ImageField(upload_to='Articles', blank=False, null=False)
     body = RichTextField()
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
@@ -61,22 +61,5 @@ class Rating(models.Model):
     class Meta:
         verbose_name = 'Rating'
         verbose_name_plural = 'Ratings'
-
-
-# class Comentario(models.Model):
-#     #post = models.ForeignKey(Article,on_delete=models.CASCADE,related_name='comentarios')
-#     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-#     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=80)
-#     email = models.EmailField()
-#     body = models.TextField()
-#     created_on = models.DateTimeField(auto_now_add=True)
-#     active = models.BooleanField(default=False)
-
-#     class Meta:
-#         ordering = ['created_on']
-
-#     def __str__(self):
-#         return 'Comentado {} por {}'.format(self.body, self.name)
     
         

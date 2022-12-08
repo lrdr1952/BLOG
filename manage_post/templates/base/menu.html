@@ -14,7 +14,7 @@
                 <li>
                     <!-- Imagen del usuario -->
                     {% if request.user.profile %}
-                    <img src="{{ request.user.profile.photo.url }}" alt="Profile"
+                        <img src="{{ request.user.profile.photo.url }}" alt="Profile"
                          class="img-profile">
                     {% else %}
                     <img src="{% static 'base/image/Default/default-user.png' %}" alt="Profile"

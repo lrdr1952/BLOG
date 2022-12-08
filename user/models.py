@@ -1,4 +1,4 @@
-from cloudinary.models import CloudinaryField
+#from cloudinary.models import CloudinaryField
 from decouple import config
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import send_mail
@@ -13,8 +13,8 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    photo = CloudinaryField('image')
-    #photo = models.ImageField(upload_to='Profiles',blank=False, null=False)
+    #photo = CloudinaryField('image')
+    photo = models.ImageField(upload_to='Profiles',blank=False, null=False)
 
     def __str__(self):
         return self.user.username
